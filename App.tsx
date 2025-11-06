@@ -76,6 +76,22 @@ const Icon = ({ name, className = '' }) => {
         <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
       </svg>
     ),
+    // Project Stack Icons
+    nodejs: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7.33V16.67L12 22L22 16.67V7.33L12 2ZM10.23 15.54L7.5 13.13V10.2L10.23 7.79L12.96 9.54V13.8L10.23 15.54Z" /></svg>,
+    postgresql: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm-1 15H9v-5H7v5H5V9h6v8zm5 0h-2v-2.26c0-1.31-.6-1.95-1.8-1.95c-.82 0-1.2.4-1.2 1.1V17h-2V9h2v1.23c.5-.89 1.42-1.23 2.3-1.23c1.93 0 3.7 1.13 3.7 3.74V17z"/></svg>,
+    redis: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 7v10l9 5l9-5V7l-9-5zm-1.04 15.68h-2.1V9.78h2.1v7.9zM17.13 13c0 1.81-1.32 2.92-3.32 2.92c-1.89 0-3.23-1.04-3.23-2.75V9.78h2.1v3.2c0 .8.41 1.25 1.13 1.25c.78 0 1.16-.48 1.16-1.3V9.78h2.13v3.22z"/></svg>,
+    kubernetes: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm-3.5-9.5L12 9.29l3.5 3.21l-3.5 3.21l-3.5-3.21z"/></svg>,
+    rabbitmq: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm2 14h-4v-2h4v2zm0-4h-4v-2h4v2zm-2-4c-.55 0-1-.45-1-1s.45-1 1-1s1 .45 1 1s-.45 1-1 1z"/></svg>,
+    python: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>,
+    apachekafka: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10l10 5l10-5V7L12 2zM8 16H6v-5h2v5zm4 0h-2v-5h2v5zm4 0h-2v-5h2v5z"/></svg>,
+    mongodb: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm-1.5 14h-3v-2.5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5V16h-2v-1.5c0-.28-.22-.5-.5-.5s-.5.22-.5.5V16zm5-4.5c-1.38 0-2.5-1.12-2.5-2.5S14.12 7 15.5 7s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>,
+    docker: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.49 2.94 8.29 6.96 9.53V10H6v-3h2.96V4.5c0-2.97 1.81-4.6 4.54-4.6c1.28 0 2.38.09 2.69.14V3h-1.6c-1.44 0-1.72.68-1.72 1.68V7h3.33l-.43 3H14.8v11.53c4.02-1.24 6.96-5.04 6.96-9.53z"/></svg>,
+    grafana: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10l10 5l10-5V7L12 2zm-2 14H8v-4h2v4zm4 0h-2v-7h2v7zm4 0h-2V8h2v8z"/></svg>,
+    go: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm-2 14.5c-2.49 0-4.5-2.01-4.5-4.5S7.51 7.5 10 7.5c1.18 0 2.24.46 3 1.22V6h3v7.5c0 2.49-2.01 4.5-4.5 4.5z"/></svg>,
+    mysql: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm-2 14h-2v-4H6v4H4V8h6v8zm8-2.5c0 1.38-1.12 2.5-2.5 2.5S13 14.88 13 13.5s1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5z"/></svg>,
+    nginx: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm-2 15l-4-4v-2h4v6zm4 0V9h4v2l-4 4z"/></svg>,
+    aws: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm-1.5 14h-3L12 5.5l4.5 10.5h-3L12 13l-1.5 3z"/></svg>,
+    terraform: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10l10 5l10-5V7L12 2zM9 16.5V11l-4 2.5v3L9 16.5zM15 16.5l4-2.5v-3L15 11v5.5zM13.5 9.5L12 8.5l-1.5 1V7h3v2.5z"/></svg>,
   };
   return icons[name] || null;
 };
@@ -157,22 +173,17 @@ const App = () => {
                       {project.name}
                   </PixelBox>
                   <PixelBox className="bg-white p-6 -mt-2" rotation={1}>
-                      <p>{project.description}</p>
+                      <p className="mb-6">{project.description}</p>
+                      <div className="border-t-4 border-black border-dashed my-4"></div>
+                      <div className="flex flex-wrap gap-3">
+                          {project.stack.map(tech => (
+                              <div key={tech} className="bg-gray-100 border-2 border-black p-2 flex items-center gap-2 transition-transform hover:scale-110 hover:-rotate-3">
+                                  <Icon name={tech.toLowerCase().replace(/\s/g, '').replace('.', '')} className="w-5 h-5" />
+                                  <span className="text-xs font-semibold">{tech}</span>
+                              </div>
+                          ))}
+                      </div>
                   </PixelBox>
-                  {project.image && 
-                    <PixelBox className="relative overflow-hidden group cursor-pointer -mt-2" rotation={-1}>
-                        <img src={project.image} alt={project.name} className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110" />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all duration-300 flex flex-col items-center justify-center p-4">
-                            <div className="flex flex-wrap gap-2 justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-150">
-                                {project.stack.map(tech => (
-                                    <PixelBox key={tech} className="bg-gray-700 text-white p-2 text-xs">
-                                        {tech}
-                                    </PixelBox>
-                                ))}
-                            </div>
-                        </div>
-                    </PixelBox>
-                  }
               </div>
           ))}
       </Section>

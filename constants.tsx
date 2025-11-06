@@ -27,19 +27,16 @@ export const PROJECTS: Project[] = [
     name: "E-Commerce Microservices Platform",
     description: "Built a scalable microservices architecture handling 1M+ daily transactions. Implemented event-driven communication using RabbitMQ and Redis for caching. Services deployed on Kubernetes with auto-scaling capabilities.",
     stack: ["Node.js", "PostgreSQL", "Redis", "Kubernetes", "RabbitMQ"],
-    image: "https://i.imgur.com/8Q14t7o.png"
   },
   {
     name: "Real-Time Analytics Engine",
     description: "Developed a high-performance analytics pipeline processing 50GB+ of data daily. Implemented stream processing with Apache Kafka and designed efficient data models for time-series analysis. Reduced query times by 85% through optimized indexing.",
     stack: ["Python", "Apache Kafka", "MongoDB", "Docker", "Grafana"],
-    image: "https://i.imgur.com/8Q14t7o.png"
   },
   {
     name: "RESTful API Gateway",
     description: "Architected a robust API gateway serving 200+ endpoints with rate limiting, authentication, and comprehensive logging. Implemented OAuth 2.0 and JWT for security. Achieved 99.9% uptime with load balancing and health checks.",
     stack: ["Go", "MySQL", "Nginx", "AWS", "Terraform"],
-    image: "https://i.imgur.com/8Q14t7o.png"
   },
 ];
 

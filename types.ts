@@ -6,5 +6,4 @@ export interface Project {
   stack: string[];
   url?: string;
   live?: string;
-  image?: string;
 }
