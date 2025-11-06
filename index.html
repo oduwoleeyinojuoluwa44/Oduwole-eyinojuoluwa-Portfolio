@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class', // Enable class-based dark mode
+        theme: {
+          extend: {},
+        },
+        plugins: [],
+      }
+    </script>
     <style>
       body {
         font-family: 'Press Start 2P', cursive;
@@ -28,12 +37,23 @@
         background: #000;
         border-left: 2px solid #fff;
       }
+      .dark ::-webkit-scrollbar-track {
+        background: #fde047; /* yellow-300 */
+        border-left: 2px solid #000;
+      }
       ::-webkit-scrollbar-thumb {
         background: #facc15; /* yellow-400 */
         border: 2px solid #000;
       }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #000;
+        border: 2px solid #fde047; /* yellow-300 */
+      }
       ::-webkit-scrollbar-thumb:hover {
         background: #fde047; /* yellow-300 */
+      }
+      .dark ::-webkit-scrollbar-thumb:hover {
+        background: #1f2937; /* gray-800 */
       }
     </style>
   <script type="importmap">

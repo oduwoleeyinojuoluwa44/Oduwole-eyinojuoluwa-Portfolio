@@ -74,8 +74,8 @@ export const CONTACT_LINKS = [
     },
     {
         name: 'Email',
-        url: 'mailto:hello@backend.dev',
-        text: 'hello@backend.dev',
+        url: 'mailto:oduwoleeyinojoluwa44@gmail.com',
+        text: 'oduwoleeyinojoluwa44@gmail.com',
         icon: 'email',
         color: 'bg-red-500'
     }

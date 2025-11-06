@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ABOUT_CARDS, PROJECTS, EXPERTISE, CONTACT_LINKS } from './constants';
 import { Project } from './types';
 
@@ -27,17 +27,17 @@ const PixelBox = ({
     'bottom-left': 'bottom-0 left-0 -mb-3 -ml-3',
   };
 
-  const interactiveClasses = 'transition-all duration-300 ease-in-out hover:!rotate-0 hover:scale-[1.03] hover:shadow-[12px_12px_0_0_#000] z-10 hover:z-20';
+  const interactiveClasses = 'transition-all duration-300 ease-in-out hover:!rotate-0 hover:scale-[1.03] hover:shadow-[12px_12px_0_0_#000] dark:hover:shadow-[12px_12px_0_0_#facc15] z-10 hover:z-20';
 
   return (
     <Component
-      className={`relative border-4 border-black shadow-[8px_8px_0_0_#000] ${interactiveClasses} ${className}`}
+      className={`relative border-4 border-black dark:border-white shadow-[8px_8px_0_0_#000] dark:shadow-[8px_8px_0_0_#facc15] ${interactiveClasses} ${className}`}
       style={{ transform: `rotate(${rotation}deg)` }}
       {...props}
     >
       {children}
       {sticker && (
-        <div className={`absolute w-8 h-8 border-2 border-black ${sticker.color} ${stickerPositions[sticker.position]} rotate-12`}></div>
+        <div className={`absolute w-8 h-8 border-2 border-black dark:border-white ${sticker.color} ${stickerPositions[sticker.position]} rotate-12`}></div>
       )}
     </Component>
   );
@@ -76,6 +76,16 @@ const Icon = ({ name, className = '' }) => {
         <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
       </svg>
     ),
+    moon: (
+      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    ),
+    sun: (
+      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    ),
     // Project Stack Icons
     nodejs: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7.33V16.67L12 22L22 16.67V7.33L12 2ZM10.23 15.54L7.5 13.13V10.2L10.23 7.79L12.96 9.54V13.8L10.23 15.54Z" /></svg>,
     postgresql: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm-1 15H9v-5H7v5H5V9h6v8zm5 0h-2v-2.26c0-1.31-.6-1.95-1.8-1.95c-.82 0-1.2.4-1.2 1.1V17h-2V9h2v1.23c.5-.89 1.42-1.23 2.3-1.23c1.93 0 3.7 1.13 3.7 3.74V17z"/></svg>,
@@ -97,44 +107,58 @@ const Icon = ({ name, className = '' }) => {
 };
 
 const Section = ({ id, children, className = '' }: { id: string; children?: React.ReactNode; className?: string; }) => (
-    <section id={id} className={`min-h-screen w-full p-4 md:p-8 lg:p-16 flex flex-col items-center justify-center relative overflow-hidden ${className}`}>
+    <section id={id} className={`min-h-screen w-full p-4 md:p-8 lg:p-16 flex flex-col items-center justify-center relative overflow-hidden transition-colors duration-500 ${className}`}>
       {children}
     </section>
 );
 
 const Cloud = ({ className = '' }) => (
-    <div className={`absolute w-32 h-16 bg-white border-4 border-black ${className}`}>
-        <div className="absolute -top-4 left-8 w-16 h-8 bg-white border-4 border-black"></div>
+    <div className={`absolute w-32 h-16 bg-white border-4 border-black dark:bg-gray-700 dark:border-white ${className}`}>
+        <div className="absolute -top-4 left-8 w-16 h-8 bg-white border-4 border-black dark:bg-gray-700 dark:border-white"></div>
     </div>
 );
 
 const Character = () => (
     <div className="absolute left-8 bottom-16 md:left-16 w-24 h-32 hidden lg:block">
         {/* Head */}
-        <div className="absolute top-0 left-2 w-20 h-20 bg-green-500 border-4 border-black">
+        <div className="absolute top-0 left-2 w-20 h-20 bg-green-500 border-4 border-black dark:border-white">
             {/* Eyes */}
-            <div className="absolute top-4 left-4 w-4 h-4 bg-black"></div>
-            <div className="absolute top-4 right-4 w-4 h-4 bg-black"></div>
+            <div className="absolute top-4 left-4 w-4 h-4 bg-black dark:bg-white"></div>
+            <div className="absolute top-4 right-4 w-4 h-4 bg-black dark:bg-white"></div>
         </div>
         {/* Hat */}
-        <div className="absolute -top-6 left-0 w-12 h-6 bg-yellow-400 border-4 border-black"></div>
-        <div className="absolute -top-10 left-2 w-8 h-4 bg-green-500 border-4 border-black"></div>
+        <div className="absolute -top-6 left-0 w-12 h-6 bg-yellow-400 border-4 border-black dark:border-white"></div>
+        <div className="absolute -top-10 left-2 w-8 h-4 bg-green-500 border-4 border-black dark:border-white"></div>
     </div>
 );
 
 const App = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <div className="text-black text-sm md:text-base leading-tight">
-      <Section id="hero" className="bg-sky-500">
+    <div className="text-black dark:text-white text-sm md:text-base leading-tight">
+      <Section id="hero" className="bg-sky-500 dark:bg-gray-900">
           <Cloud className="top-16 left-1/4 opacity-80" />
           <Cloud className="top-32 right-1/4" />
           <Cloud className="bottom-48 left-1/3 opacity-60" />
           <Character />
           <div className="relative z-10 text-center space-y-8">
-              <PixelBox as="h1" className="bg-white p-4 md:p-6 text-2xl md:text-4xl lg:text-5xl inline-block" rotation={-2}>
+              <PixelBox as="h1" className="bg-white dark:bg-gray-800 p-4 md:p-6 text-2xl md:text-4xl lg:text-5xl inline-block" rotation={-2}>
                 Oduwole Eyinojuoluwa
               </PixelBox>
-              <PixelBox className="bg-yellow-400 p-3 md:p-4 text-lg md:text-xl max-w-xl mx-auto" rotation={1}>
+              <PixelBox className="bg-yellow-400 dark:bg-yellow-500 text-black p-3 md:p-4 text-lg md:text-xl max-w-xl mx-auto" rotation={1}>
                 Building scalable systems & robust APIs
               </PixelBox>
           </div>
@@ -143,11 +167,11 @@ const App = () => {
           </div>
       </Section>
       
-      <Section id="about" className="bg-sky-400">
+      <Section id="about" className="bg-sky-400 dark:bg-gray-800">
         <PixelBox className="bg-orange-500 p-4 mb-8 text-white" rotation={-2} sticker={{color: 'bg-pink-400', position: 'top-right'}}>
             <h2 className="text-xl md:text-3xl">Crafting Backend Solutions</h2>
         </PixelBox>
-        <PixelBox className="bg-white p-4 mb-12" rotation={1}>
+        <PixelBox className="bg-white dark:bg-gray-700 p-4 mb-12" rotation={1}>
             <p className="text-base md:text-lg">5+ years building robust backend systems</p>
         </PixelBox>
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl w-full">
@@ -166,18 +190,18 @@ const App = () => {
         </div>
       </Section>
       
-      <Section id="projects" className="bg-teal-400 space-y-16">
+      <Section id="projects" className="bg-teal-400 dark:bg-teal-900 space-y-16">
           {PROJECTS.map((project: Project, index) => (
               <div key={index} className="max-w-5xl w-full">
                   <PixelBox as="h3" className="bg-green-700 text-white p-4 text-xl md:text-2xl z-10" rotation={-1} sticker={{color: 'bg-red-400', position: 'top-right'}}>
                       {project.name}
                   </PixelBox>
-                  <PixelBox className="bg-white p-6 -mt-2" rotation={1}>
+                  <PixelBox className="bg-white dark:bg-gray-800 p-6 -mt-2" rotation={1}>
                       <p className="mb-6">{project.description}</p>
-                      <div className="border-t-4 border-black border-dashed my-4"></div>
+                      <div className="border-t-4 border-black dark:border-white border-dashed my-4"></div>
                       <div className="flex flex-wrap gap-3">
                           {project.stack.map(tech => (
-                              <div key={tech} className="bg-gray-100 border-2 border-black p-2 flex items-center gap-2 transition-transform hover:scale-110 hover:-rotate-3">
+                              <div key={tech} className="bg-gray-100 dark:bg-gray-700 border-2 border-black dark:border-gray-500 p-2 flex items-center gap-2 transition-transform hover:scale-110 hover:-rotate-3">
                                   <Icon name={tech.toLowerCase().replace(/\s/g, '').replace('.', '')} className="w-5 h-5" />
                                   <span className="text-xs font-semibold">{tech}</span>
                               </div>
@@ -186,9 +210,17 @@ const App = () => {
                   </PixelBox>
               </div>
           ))}
+            <a href="https://github.com/oduwoleeyinojuoluwa44?tab=repositories" target="_blank" rel="noopener noreferrer" className="block">
+                <PixelBox className="bg-gray-800 dark:bg-sky-500 text-white dark:text-black p-4 text-center text-lg" rotation={-1}>
+                    <div className="flex items-center justify-center gap-4">
+                        <Icon name="github" className="w-8 h-8" />
+                        <span>See More Projects</span>
+                    </div>
+                </PixelBox>
+            </a>
       </Section>
       
-      <Section id="expertise" className="bg-teal-500">
+      <Section id="expertise" className="bg-teal-500 dark:bg-teal-800">
           <PixelBox className="bg-sky-500 p-4 mb-12 text-white" rotation={2} sticker={{color: 'bg-pink-400', position: 'top-left'}}>
               <h2 className="text-xl md:text-3xl">Technical Expertise</h2>
           </PixelBox>
@@ -203,7 +235,7 @@ const App = () => {
                       <h3 className="text-white text-lg md:text-xl mb-4">{category}</h3>
                       <div className="flex flex-wrap gap-2">
                           {data.skills.map(skill => (
-                              <PixelBox key={skill} className="bg-white p-2 text-xs">
+                              <PixelBox key={skill} className="bg-white dark:bg-gray-300 text-black p-2 text-xs">
                                   {skill}
                               </PixelBox>
                           ))}
@@ -213,11 +245,11 @@ const App = () => {
           </div>
       </Section>
       
-      <Section id="contact" className="bg-green-600">
+      <Section id="contact" className="bg-green-600 dark:bg-green-900">
         <PixelBox className="bg-pink-500 p-4 mb-8 text-white" rotation={-2} sticker={{color: 'bg-yellow-300', position: 'bottom-right'}}>
             <h2 className="text-xl md:text-3xl">Let's Build Together!</h2>
         </PixelBox>
-        <PixelBox className="bg-white p-4 mb-12" rotation={1}>
+        <PixelBox className="bg-white dark:bg-gray-700 p-4 mb-12" rotation={1}>
             <p className="text-base md:text-lg">Always interested in new projects & opportunities</p>
         </PixelBox>
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl w-full">
@@ -236,15 +268,19 @@ const App = () => {
             ))}
         </div>
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-            <PixelBox className="bg-black text-white p-2 text-xs">
-                © 2025 Backend Dev Portfolio
+            <PixelBox className="bg-black dark:bg-white dark:text-black text-white p-2 text-xs">
+                © 2025 Oduwole Eyinojuoluwa
             </PixelBox>
         </div>
       </Section>
 
       <div className="fixed bottom-4 right-4 z-50">
-          <PixelBox className="bg-black text-white w-12 h-12 flex items-center justify-center text-2xl cursor-pointer hover:bg-gray-700">
-              ?
+          <PixelBox 
+            className="bg-black text-white w-12 h-12 flex items-center justify-center text-2xl cursor-pointer hover:bg-gray-700 dark:bg-yellow-400 dark:text-black dark:hover:bg-yellow-300"
+            onClick={toggleDarkMode}
+            rotation={0}
+          >
+              {isDarkMode ? <Icon name="sun" className="w-6 h-6" /> : <Icon name="moon" className="w-6 h-6" />}
           </PixelBox>
       </div>
 
