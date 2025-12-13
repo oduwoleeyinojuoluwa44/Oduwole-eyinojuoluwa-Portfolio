@@ -149,6 +149,7 @@ const Character = () => (
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isExperienceExpanded, setIsExperienceExpanded] = useState(false);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -161,6 +162,8 @@ const App = () => {
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
+  
+  const displayedExperience = isExperienceExpanded ? EXPERIENCE : EXPERIENCE.slice(0, 3);
 
   return (
     <div className="text-black dark:text-white text-sm md:text-base leading-tight">
@@ -209,17 +212,13 @@ const App = () => {
         <PixelBox className="bg-white dark:bg-gray-800 p-4 md:p-8 max-w-4xl w-full" rotation={-1} sticker={{color: 'bg-yellow-400', position: 'top-right'}}>
           <div className="flex justify-between items-center mb-6 md:mb-8 border-b-4 border-black dark:border-white pb-4">
             <h2 className="text-xl md:text-3xl font-bold">Experience</h2>
-            <div className="flex gap-4 opacity-50">
-                <Icon name="plus" className="w-6 h-6" />
-                <Icon name="pencil" className="w-6 h-6" />
-            </div>
           </div>
 
           <div className="space-y-6 md:space-y-8">
-            {EXPERIENCE.map((job, index) => (
+            {displayedExperience.map((job, index) => (
               <div key={index} className="flex gap-4 relative">
                   {/* Timeline Line */}
-                  {index !== EXPERIENCE.length - 1 && (
+                  {index !== displayedExperience.length - 1 && (
                       <div className="absolute left-[1.35rem] top-14 bottom-0 w-1 bg-gray-300 dark:bg-gray-600 -z-10" />
                   )}
                   
@@ -253,8 +252,16 @@ const App = () => {
             ))}
           </div>
           
-          <div className="mt-8 pt-4 text-center border-t-4 border-black dark:border-white">
-            <a href="https://www.linkedin.com/in/oduwole-eyinojuoluwa-taofeek-teo-54544b290/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold hover:underline">
+          <div className="mt-8 pt-4 text-center border-t-4 border-black dark:border-white flex flex-col gap-4">
+             {EXPERIENCE.length > 3 && (
+                <button 
+                  onClick={() => setIsExperienceExpanded(!isExperienceExpanded)}
+                  className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-black dark:text-white font-bold py-2 px-4 border-2 border-black dark:border-white shadow-[4px_4px_0_0_#000000] dark:shadow-[4px_4px_0_0_#ffffff] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all mx-auto text-xs md:text-sm"
+                >
+                  {isExperienceExpanded ? "Show Less" : `Show ${EXPERIENCE.length - 3} More`}
+                </button>
+             )}
+            <a href="https://www.linkedin.com/in/oduwole-eyinojuoluwa-taofeek-teo-54544b290/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold hover:underline mx-auto">
               Show all experiences on LinkedIn <span>→</span>
             </a>
           </div>
