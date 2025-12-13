@@ -1,5 +1,5 @@
 import React from 'react';
-import { Project } from './types';
+import { Project, ExperienceItem } from './types';
 
 export const ABOUT_CARDS = [
   {
@@ -20,6 +20,57 @@ export const ABOUT_CARDS = [
     text: 'High-performance APIs',
     color: 'bg-yellow-400',
   },
+];
+
+export const EXPERIENCE: ExperienceItem[] = [
+  {
+    title: "Back End Developer",
+    company: "HNG Tech",
+    type: "Internship",
+    date: "Oct 2025 - Present · 3 mos",
+    logoColor: "bg-sky-500",
+    logoText: "HNG"
+  },
+  {
+    title: "Back End Developer",
+    company: "XPRESSCORE",
+    type: "Full-time",
+    date: "Oct 2025 - Present · 3 mos",
+    skills: ["Back-End Web Development", "Critical Thinking"],
+    logoColor: "bg-red-600",
+    logoText: "XC"
+  },
+  {
+    title: "Cybersecurity intern",
+    company: "CodeAlpha",
+    type: "Internship",
+    date: "Nov 2024 - Dec 2024 · 2 mos",
+    location: "India · Remote",
+    logoColor: "bg-blue-800",
+    logoText: "CA"
+  },
+  {
+    title: "Cybersecurity intern",
+    company: "KPMG Nigeria",
+    type: "Internship",
+    date: "Jul 2024 - Nov 2024 · 5 mos",
+    location: "Nigeria · Hybrid",
+    description: "At KPMG, I developed a robust understanding of business resilience, encompassing risk assessment and mitigation strategies.",
+    skills: ["Risk Assessment", "Risk Management"],
+    logoColor: "bg-blue-600",
+    logoText: "KPMG"
+  },
+  {
+    title: "Backend Software Engineer",
+    company: "HNG Tech",
+    type: "Contract",
+    date: "Aug 2023 - Nov 2023 · 4 mos",
+    location: "Nigeria",
+    description: "During my time in the HNGx internship cohort, I had the opportunity to work on a range of impactful projects that expanded my expertise.",
+    skills: ["JavaScript", "Node.js"],
+    logoColor: "bg-sky-500",
+    logoText: "HNG"
+  }
 ];
 
 export const PROJECTS: Project[] = [

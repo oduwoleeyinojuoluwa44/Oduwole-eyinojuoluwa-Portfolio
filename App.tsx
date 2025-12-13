@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ABOUT_CARDS, PROJECTS, EXPERTISE, CONTACT_LINKS } from './constants';
+import { ABOUT_CARDS, PROJECTS, EXPERTISE, CONTACT_LINKS, EXPERIENCE } from './constants';
 import { Project } from './types';
 
 // Helper component for the 8-bit style boxes
@@ -27,7 +27,7 @@ const PixelBox = ({
     'bottom-left': 'bottom-0 left-0 -mb-3 -ml-3',
   };
 
-  const interactiveClasses = 'transition-all duration-300 ease-in-out hover:!rotate-0 hover:scale-[1.03] hover:shadow-[12px_12px_0_0_#000] dark:hover:shadow-[12px_12px_0_0_#facc15] z-10 hover:z-20';
+  const interactiveClasses = 'transition-all duration-300 ease-in-out hover:!rotate-0 hover:scale-[1.01] hover:shadow-[12px_12px_0_0_#000] dark:hover:shadow-[12px_12px_0_0_#facc15] z-10 hover:z-20';
 
   return (
     <Component
@@ -85,6 +85,21 @@ const Icon = ({ name, className = '' }) => {
       <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
       </svg>
+    ),
+    pencil: (
+      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+      </svg>
+    ),
+    plus: (
+      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+    ),
+    diamond: (
+       <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+         <path d="M6 3h12l4 6-10 13L2 9z"></path>
+       </svg>
     ),
     // Project Stack Icons
     nodejs: <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7.33V16.67L12 22L22 16.67V7.33L12 2ZM10.23 15.54L7.5 13.13V10.2L10.23 7.79L12.96 9.54V13.8L10.23 15.54Z" /></svg>,
@@ -188,6 +203,62 @@ const App = () => {
                 </PixelBox>
             ))}
         </div>
+      </Section>
+
+      <Section id="experience" className="bg-indigo-400 dark:bg-indigo-900">
+        <PixelBox className="bg-white dark:bg-gray-800 p-4 md:p-8 max-w-4xl w-full" rotation={-1} sticker={{color: 'bg-yellow-400', position: 'top-right'}}>
+          <div className="flex justify-between items-center mb-6 md:mb-8 border-b-4 border-black dark:border-white pb-4">
+            <h2 className="text-xl md:text-3xl font-bold">Experience</h2>
+            <div className="flex gap-4 opacity-50">
+                <Icon name="plus" className="w-6 h-6" />
+                <Icon name="pencil" className="w-6 h-6" />
+            </div>
+          </div>
+
+          <div className="space-y-6 md:space-y-8">
+            {EXPERIENCE.map((job, index) => (
+              <div key={index} className="flex gap-4 relative">
+                  {/* Timeline Line */}
+                  {index !== EXPERIENCE.length - 1 && (
+                      <div className="absolute left-[1.35rem] top-14 bottom-0 w-1 bg-gray-300 dark:bg-gray-600 -z-10" />
+                  )}
+                  
+                  {/* Logo Placeholder */}
+                  <div className={`w-12 h-12 flex-shrink-0 ${job.logoColor} border-2 border-black dark:border-white flex items-center justify-center text-white font-bold text-xs p-1 text-center leading-none shadow-[4px_4px_0_0_#000000] dark:shadow-[4px_4px_0_0_#ffffff]`}>
+                      {job.logoText}
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 pb-8 border-b-2 border-dashed border-gray-300 dark:border-gray-600 last:border-0 last:pb-0">
+                      <h3 className="text-base md:text-lg font-bold">{job.title}</h3>
+                      <p className="text-sm text-gray-700 dark:text-gray-300">
+                        {job.company} · {job.type}
+                      </p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 mb-2">
+                        {job.date} {job.location && `· ${job.location}`}
+                      </p>
+                      
+                      {job.description && (
+                        <p className="text-sm mt-2 mb-2 leading-relaxed opacity-90">{job.description}</p>
+                      )}
+                      
+                      {job.skills && (
+                        <div className="flex flex-wrap items-center gap-2 mt-2">
+                          <Icon name="diamond" className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                          <span className="text-xs font-bold text-gray-700 dark:text-gray-300">{job.skills.join(', ')}</span>
+                        </div>
+                      )}
+                  </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-8 pt-4 text-center border-t-4 border-black dark:border-white">
+            <a href="https://www.linkedin.com/in/oduwole-eyinojuoluwa-taofeek-teo-54544b290/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold hover:underline">
+              Show all experiences on LinkedIn <span>→</span>
+            </a>
+          </div>
+        </PixelBox>
       </Section>
       
       <Section id="projects" className="bg-teal-400 dark:bg-teal-900 space-y-16">
