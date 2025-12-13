@@ -1,20 +1,32 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Oduwole Eyinojuoluwa - Backend Developer Portfolio
 
-# Run and deploy your AI Studio app
+Welcome to my personal portfolio! This project is a retro-themed, 8-bit style website designed to showcase my journey and expertise as a Backend Developer.
 
-This contains everything you need to run your app locally.
+## 🚀 About The Project
 
-View your app in AI Studio: https://ai.studio/apps/drive/10Tb4CmGof3eeE7uy2i3_COjVILbmz6zd
+This portfolio highlights my experience in:
+- **System Architecture**: Designing scalable microservices.
+- **Data Engineering**: Optimizing databases and pipelines.
+- **Backend Development**: Building high-performance APIs with Node.js, Python, Go, and more.
 
-## Run Locally
+## 🎨 Features
 
-**Prerequisites:**  Node.js
+- **8-Bit Aesthetic**: A unique, pixelated design style using the 'Press Start 2P' font.
+- **Interactive UI**: Playful elements with retro animations and hover effects.
+- **Dark/Light Mode**: Toggle between day and night themes with a pixelated switch.
+- **Responsive Design**: Optimized for desktop and mobile viewing, including collapsible sections.
 
+## 🛠️ Tech Stack
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- **Frontend**: React 19, TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Custom SVG Pixel Icons
+
+## 📬 Contact Me
+
+- **GitHub**: [oduwoleeyinojuoluwa44](https://github.com/oduwoleeyinojuoluwa44?tab=repositories)
+- **LinkedIn**: [Oduwole Eyinojuoluwa](https://www.linkedin.com/in/oduwole-eyinojuoluwa-taofeek-teo-54544b290/)
+- **Email**: oduwoleeyinojoluwa44@gmail.com
+
+---
+© 2025 Oduwole Eyinojuoluwa. All rights reserved.
