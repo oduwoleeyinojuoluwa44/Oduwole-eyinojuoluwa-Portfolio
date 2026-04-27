@@ -131,3 +131,81 @@ export const CONTACT_LINKS = [
         color: 'bg-red-500'
     }
 ];
+
+export interface Work {
+  name: string;
+  url: string;
+  role: string;
+  roleType: 'frontend' | 'backend';
+  color: string;
+  description: string;
+  achievements?: string[];
+  keyContribution?: string;
+  yearsOfExp?: string;
+}
+
+export const WORKS: Work[] = [
+  {
+    name: 'Lawyers for Visas',
+    url: 'https://www.lawyersforvisas.com',
+    role: 'Current CTO',
+    roleType: 'frontend',
+    color: 'bg-blue-600',
+    description: 'Leading visa immigration consulting platform with modern web infrastructure',
+    achievements: ['Architecture design', 'Team leadership', 'Full-stack optimization'],
+    yearsOfExp: 'Current'
+  },
+  {
+    name: 'Momento Living',
+    url: 'https://www.momentoliving.com/',
+    role: 'Head of Development (Age 19)',
+    roleType: 'frontend',
+    color: 'bg-purple-600',
+    description: 'Premium property and lifestyle management platform',
+    achievements: ['Led full development team', 'Built scalable infrastructure', 'Managed 5+ developers'],
+    yearsOfExp: '1.5+ years'
+  },
+  {
+    name: 'Verta Property Group',
+    url: 'https://vertapropertygroup.co.uk/',
+    role: 'Full Stack Developer',
+    roleType: 'frontend',
+    color: 'bg-green-600',
+    description: 'Real estate solutions with integrated property management systems',
+    achievements: ['Responsive design', 'Performance optimization', 'User experience enhancement'],
+    yearsOfExp: '1+ year'
+  },
+  {
+    name: 'Deen AI',
+    url: 'https://deenai.app/',
+    role: 'Lead Backend Developer',
+    roleType: 'backend',
+    color: 'bg-indigo-600',
+    description: 'AI-powered platform with complex data processing pipelines',
+    keyContribution: 'Architected microservices infrastructure handling 10K+ concurrent users. Implemented Redis caching layer reducing API response times by 78%. Built real-time WebSocket infrastructure for live data streaming. Deployed on Kubernetes with auto-scaling, achieving 99.95% uptime.',
+    achievements: ['Microservices architecture', 'Real-time data processing', 'Cloud infrastructure (K8s)'],
+    yearsOfExp: '2+ years'
+  },
+  {
+    name: 'Manifesti',
+    url: 'https://manifesti.app/',
+    role: 'Support Backend Developer (Code Audits)',
+    roleType: 'backend',
+    color: 'bg-pink-600',
+    description: 'Content creation and distribution platform with enterprise-grade backend',
+    keyContribution: 'Conducted comprehensive code audits and resolved critical architectural issues. Fixed N+1 query problems reducing database load by 65%. Refactored authentication system improving security posture. Implemented proper error handling and logging across 50+ endpoints.',
+    achievements: ['Code quality improvements', 'Security hardening', 'Performance optimization'],
+    yearsOfExp: '1+ year'
+  },
+  {
+    name: 'US Express Drop',
+    url: 'https://www.usexpressdrop.com/',
+    role: 'Backend Developer',
+    roleType: 'backend',
+    color: 'bg-red-600',
+    description: 'Logistics and package delivery platform with real-time tracking',
+    keyContribution: 'Built payment processing integration with PCI DSS compliance. Developed geolocation API reducing tracking latency to <200ms. Implemented distributed job queue handling 50K+ daily shipments. Created audit trails for regulatory compliance reducing support tickets by 40%.',
+    achievements: ['Payment systems', 'Real-time tracking', 'Job queue optimization'],
+    yearsOfExp: '1.5+ years'
+  }
+];

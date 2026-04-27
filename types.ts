@@ -19,3 +19,15 @@ export interface ExperienceItem {
   logoColor: string;
   logoText: string;
 }
+
+export interface Work {
+  name: string;
+  url: string;
+  role: string;
+  roleType: 'frontend' | 'backend';
+  color: string;
+  description: string;
+  achievements?: string[];
+  keyContribution?: string;
+  yearsOfExp?: string;
+}

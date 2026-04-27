@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ABOUT_CARDS, PROJECTS, EXPERTISE, CONTACT_LINKS, EXPERIENCE } from './constants';
+import { ABOUT_CARDS, PROJECTS, EXPERTISE, CONTACT_LINKS, EXPERIENCE, WORKS } from './constants';
 import { Project } from './types';
 
 // Helper component for the 8-bit style boxes
@@ -296,6 +296,71 @@ const App = () => {
                     </div>
                 </PixelBox>
             </a>
+      </Section>
+      
+      <Section id="works" className="bg-orange-400 dark:bg-orange-900 space-y-12">
+          <PixelBox className="bg-white dark:bg-gray-800 p-4 md:p-8 text-center max-w-4xl" rotation={-1} sticker={{color: 'bg-yellow-300', position: 'top-left'}}>
+              <h2 className="text-2xl md:text-4xl font-bold mb-2">4 Years of Full Stack Excellence</h2>
+              <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">Frontend Architecture & Backend Infrastructure</p>
+          </PixelBox>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl w-full">
+              {WORKS.map((work, index) => (
+                  <a 
+                    key={work.name}
+                    href={work.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block"
+                  >
+                    <PixelBox 
+                      className={`${work.color} p-6 text-white h-full flex flex-col transition-all duration-300 hover:shadow-[16px_16px_0_0_#000] dark:hover:shadow-[16px_16px_0_0_#facc15] transform hover:scale-105 active:scale-95`}
+                      rotation={index % 2 === 0 ? 1 : -2}
+                      sticker={index % 3 === 0 ? {color: 'bg-yellow-300', position: 'top-right'} : undefined}
+                    >
+                        <div className="flex items-start justify-between mb-3">
+                            <h3 className="text-lg md:text-xl font-bold flex-1">{work.name}</h3>
+                            {work.roleType === 'backend' && (
+                              <span className="text-xs bg-black text-white px-2 py-1 rounded-sm ml-2 font-bold">BE</span>
+                            )}
+                            {work.roleType === 'frontend' && (
+                              <span className="text-xs bg-white text-black px-2 py-1 rounded-sm ml-2 font-bold">FE</span>
+                            )}
+                        </div>
+                        
+                        <p className="text-sm md:text-base font-bold mb-2 text-yellow-100">{work.role}</p>
+                        <p className="text-xs text-gray-100 mb-3 flex-grow">{work.description}</p>
+                        
+                        {work.keyContribution && (
+                          <div className="bg-black bg-opacity-30 p-3 rounded-sm mb-3 text-xs leading-relaxed">
+                              <p className="font-bold mb-1">Key Contribution:</p>
+                              <p>{work.keyContribution}</p>
+                          </div>
+                        )}
+                        
+                        {work.achievements && (
+                          <div className="flex flex-wrap gap-2 mb-3">
+                              {work.achievements.map((achievement) => (
+                                <span key={achievement} className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">
+                                    {achievement}
+                                </span>
+                              ))}
+                          </div>
+                        )}
+                        
+                        <div className="text-xs font-bold text-yellow-100 pt-3 border-t border-white border-opacity-30">
+                            {work.yearsOfExp}
+                        </div>
+                    </PixelBox>
+                  </a>
+              ))}
+          </div>
+
+          <div className="text-center">
+              <p className="text-sm md:text-base font-bold text-gray-700 dark:text-gray-300">
+                  Hover over any card to view more details • Click to visit the live site
+              </p>
+          </div>
       </Section>
       
       <Section id="expertise" className="bg-teal-500 dark:bg-teal-800">
