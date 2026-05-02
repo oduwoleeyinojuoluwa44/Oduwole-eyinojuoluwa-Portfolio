@@ -150,6 +150,8 @@ const Character = () => (
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isExperienceExpanded, setIsExperienceExpanded] = useState(false);
+  const [blogs, setBlogs] = useState<any[]>([]);
+  const [blogsLoading, setBlogsLoading] = useState(true);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -158,6 +160,24 @@ const App = () => {
       document.documentElement.classList.remove('dark');
     }
   }, [isDarkMode]);
+
+  // Fetch blogs from Dev.to API
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        setBlogsLoading(true);
+        const response = await fetch('https://dev.to/api/articles?per_page=6&sort_by=recent');
+        const data = await response.json();
+        setBlogs(data);
+      } catch (error) {
+        console.error('Error fetching blogs:', error);
+      } finally {
+        setBlogsLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -359,6 +379,71 @@ const App = () => {
           <div className="text-center">
               <p className="text-sm md:text-base font-bold text-gray-700 dark:text-gray-300">
                   Hover over any card to view more details • Click to visit the live site
+              </p>
+          </div>
+      </Section>
+      
+      <Section id="blogs" className="bg-pink-400 dark:bg-pink-900 space-y-12">
+          <PixelBox className="bg-white dark:bg-gray-800 p-4 md:p-8 text-center max-w-4xl" rotation={1} sticker={{color: 'bg-yellow-300', position: 'top-right'}}>
+              <h2 className="text-2xl md:text-4xl font-bold mb-2">Latest Tech Articles</h2>
+              <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">Real-time insights from the dev community</p>
+          </PixelBox>
+
+          {blogsLoading ? (
+              <PixelBox className="bg-white dark:bg-gray-800 p-8 text-center max-w-4xl">
+                  <p className="text-lg font-bold">Loading articles...</p>
+              </PixelBox>
+          ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl w-full">
+                  {blogs.map((blog, index) => (
+                      <a 
+                        key={blog.id}
+                        href={blog.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group block"
+                      >
+                        <PixelBox 
+                          className="bg-white dark:bg-gray-800 h-full flex flex-col transition-all duration-300 hover:shadow-[16px_16px_0_0_#000] dark:hover:shadow-[16px_16px_0_0_#facc15] transform hover:scale-105 active:scale-95 p-6"
+                          rotation={index % 2 === 0 ? 1 : -2}
+                          sticker={index % 3 === 0 ? {color: 'bg-red-500', position: 'top-left'} : undefined}
+                        >
+                            <div className="flex items-start gap-2 mb-3">
+                                {blog.tag_list && blog.tag_list.length > 0 && (
+                                  <span className="text-xs bg-pink-500 text-white px-2 py-1 rounded font-bold">
+                                      {blog.tag_list[0]}
+                                  </span>
+                                )}
+                                <span className="text-xs text-gray-500 dark:text-gray-400">
+                                  {new Date(blog.published_at).toLocaleDateString()}
+                                </span>
+                            </div>
+                            
+                            <h3 className="text-lg md:text-xl font-bold mb-2 line-clamp-3 text-black dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+                                {blog.title}
+                            </h3>
+                            
+                            <p className="text-sm text-gray-700 dark:text-gray-300 mb-4 flex-grow line-clamp-2">
+                                {blog.description}
+                            </p>
+                            
+                            <div className="flex items-center justify-between pt-3 border-t-2 border-gray-200 dark:border-gray-700">
+                                <span className="text-xs text-gray-500 dark:text-gray-400">
+                                    By {blog.user?.name}
+                                </span>
+                                <span className="text-xs font-bold text-pink-600 dark:text-pink-400">
+                                    {blog.reading_time_minutes || 5} min read
+                                </span>
+                            </div>
+                        </PixelBox>
+                      </a>
+                  ))}
+              </div>
+          )}
+
+          <div className="text-center">
+              <p className="text-sm md:text-base font-bold text-gray-700 dark:text-gray-300">
+                  Articles updated daily • Click to read on Dev.to
               </p>
           </div>
       </Section>
