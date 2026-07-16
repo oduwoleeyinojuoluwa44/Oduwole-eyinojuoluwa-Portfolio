@@ -3,69 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oduwole Eyinojuoluwa - Backend Developer</title>
+    <title>Oduwole Eyinojuoluwa — Backend Engineer & Builder</title>
+    <meta name="description" content="You have a backend that needs to scale, an API that's slow, or a system that's stuck. I find what's blocking it and ship the fix." />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
-        darkMode: 'class', // Enable class-based dark mode
         theme: {
-          extend: {},
+          extend: {
+            fontFamily: {
+              display: ['"Archivo Black"', 'sans-serif'],
+              mono: ['"Space Mono"', 'monospace'],
+              body: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                blue: '#0ea5e9',
+                deep: '#0284c7',
+                dark: '#0c4a6e',
+                yellow: '#facc15',
+              },
+            },
+          },
         },
         plugins: [],
       }
     </script>
     <style>
       body {
-        font-family: 'Press Start 2P', cursive;
-        /* Disable anti-aliasing for pixelated font */
-        -webkit-font-smoothing: none;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: -moz-crisp-edges;
-        image-rendering: -o-pixelated;
-        image-rendering: pixelated;
+        font-family: 'Inter', sans-serif;
+        background: #0ea5e9;
       }
-      /* Custom scrollbar for game theme */
-      ::-webkit-scrollbar {
-        width: 12px;
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 12px; }
+      ::-webkit-scrollbar-track { background: #0c4a6e; }
+      ::-webkit-scrollbar-thumb { background: #facc15; border: 2px solid #000; }
+      ::-webkit-scrollbar-thumb:hover { background: #fde047; }
+
+      /* Infinite marquee */
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
       }
-      ::-webkit-scrollbar-track {
-        background: #000;
-        border-left: 2px solid #fff;
+      .animate-marquee {
+        animation: marquee 30s linear infinite;
       }
-      .dark ::-webkit-scrollbar-track {
-        background: #fde047; /* yellow-300 */
-        border-left: 2px solid #000;
+      .animate-marquee:hover { animation-play-state: paused; }
+
+      /* Scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
       }
-      ::-webkit-scrollbar-thumb {
-        background: #facc15; /* yellow-400 */
-        border: 2px solid #000;
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
       }
-      .dark ::-webkit-scrollbar-thumb {
-        background: #000;
-        border: 2px solid #fde047; /* yellow-300 */
+
+      /* Status dot pulse */
+      @keyframes pulse-dot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.35; }
       }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #fde047; /* yellow-300 */
+      .status-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+
+      /* Sui-style hero glow bloom */
+      @keyframes glow-pulse {
+        0%, 100% { opacity: 0.55; transform: scale(1); }
+        50% { opacity: 0.85; transform: scale(1.08); }
       }
-      .dark ::-webkit-scrollbar-thumb:hover {
-        background: #1f2937; /* gray-800 */
+      .hero-glow {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(90px);
+        pointer-events: none;
+        animation: glow-pulse 5s ease-in-out infinite;
       }
+
+      /* Dotted scroll connector (Sui section link) */
+      .connector-dots {
+        background-image: radial-gradient(circle, rgba(0,0,0,0.55) 2px, transparent 2.5px);
+        background-size: 4px 14px;
+        background-repeat: repeat-y;
+        background-position: center top;
+      }
+      .connector-dots.light {
+        background-image: radial-gradient(circle, rgba(255,255,255,0.6) 2px, transparent 2.5px);
+      }
+
+      /* Footer glow columns (Sui footer skyline) */
+      @keyframes col-glow {
+        0%, 100% { opacity: 0.45; }
+        50% { opacity: 1; }
+      }
+      .glow-col {
+        background: linear-gradient(to top, rgba(250, 204, 21, 0.9), rgba(14, 165, 233, 0.15) 70%, transparent);
+        animation: col-glow 4s ease-in-out infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .animate-marquee, .hero-glow, .glow-col, .status-dot { animation: none !important; }
+        .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      }
+
+      /* Selection */
+      ::selection { background: #facc15; color: #000; }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0"
-  }
-}
-</script>
-</head>
+  </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>

@@ -1,211 +1,247 @@
-import React from 'react';
-import { Project, ExperienceItem } from './types';
+import {
+  SpecRow,
+  ProofStat,
+  OpenSourceProject,
+  CaseStudy,
+  ClientWork,
+  ExperienceItem,
+  Principle,
+} from './types';
 
-export const ABOUT_CARDS = [
+const GH = 'https://github.com/oduwoleeyinojuoluwa44';
+const OG = 'https://opengraph.githubassets.com/1/oduwoleeyinojuoluwa44';
+
+export const LINKS = {
+  github: `${GH}?tab=repositories`,
+  linkedin: 'https://www.linkedin.com/in/oduwole-eyinojuoluwa-taofeek-teo-54544b290/',
+  email: 'mailto:oduwoleeyinojoluwa44@gmail.com',
+  emailText: 'oduwoleeyinojoluwa44@gmail.com',
+};
+
+export const SPEC: SpecRow[] = [
+  { label: 'BASED', value: 'Lagos, NG' },
+  { label: 'MODE', value: 'Remote · Intl' },
+  { label: 'ENGAGE', value: 'Full-time / Contract' },
+  { label: 'STACK', value: 'Node · Nest · Python' },
+  { label: 'STATUS', value: 'Available', isStatus: true },
+];
+
+export const MARQUEE_TECH = [
+  'NODE.JS', 'TYPESCRIPT', 'NESTJS', 'EXPRESS', 'PYTHON', 'GO',
+  'POSTGRESQL', 'MONGODB', 'REDIS', 'KAFKA', 'RABBITMQ',
+  'DOCKER', 'KUBERNETES', 'AWS', 'TERRAFORM',
+];
+
+export const PROOF_STATS: ProofStat[] = [
   {
-    icon: 'system',
-    title: 'System Architecture',
-    text: 'Designing scalable microservices',
-    color: 'bg-green-500',
+    target: 10, suffix: 'K+',
+    text: 'Concurrent users on microservices infrastructure I architected.',
+    tags: 'MICROSERVICES · K8S',
   },
   {
-    icon: 'data',
-    title: 'Data Engineering',
-    text: 'Optimizing databases & pipelines',
-    color: 'bg-blue-500',
+    target: 78, prefix: '−', suffix: '%',
+    text: 'API response times after the Redis caching layer I built.',
+    tags: 'REDIS · CACHING',
   },
   {
-    icon: 'performance',
-    title: 'Performance',
-    text: 'High-performance APIs',
-    color: 'bg-yellow-400',
+    target: 99.95, suffix: '%', decimals: 2,
+    text: 'Production uptime with Kubernetes auto-scaling.',
+    tags: 'K8S · AUTO-SCALING',
+  },
+  {
+    target: 50, suffix: 'K+',
+    text: 'Daily shipments through a distributed job queue. PCI DSS compliant.',
+    tags: 'QUEUES · LOGISTICS',
+  },
+  {
+    target: 65, prefix: '−', suffix: '%',
+    text: 'Database load after killing N+1 queries during code audits.',
+    tags: 'POSTGRES · AUDITS',
+  },
+];
+
+export const CREDENTIALS = 'AWS CERTIFIED · ISO 27001 LI · HNG13 FINALIST · TOP 10 / 5,000+ (ENYATA) · OPEN SOURCE MAINTAINER';
+
+export const ENGAGEMENTS = [
+  {
+    title: 'BACKEND RESCUE',
+    problem: 'Your API is slow, or your system keeps falling over.',
+    bullets: ['Architecture & query audit', 'Bottleneck identification', 'Fixes shipped to production'],
+  },
+  {
+    title: 'MVP BACKEND, END-TO-END',
+    problem: 'You have a product idea and need the backend built right the first time.',
+    bullets: ['Auth, payments, queues', 'Zero to production', 'Documented & handed over'],
+  },
+  {
+    title: 'EMBEDDED ENGINEER',
+    problem: 'You need a backend engineer who owns outcomes, not tickets.',
+    bullets: ['Full-time or contract', 'Remote, async-first', 'Team-lead experience'],
+  },
+];
+
+export const CASE_STUDIES: CaseStudy[] = [
+  {
+    number: '01',
+    title: 'A PRODUCTION JOB SCHEDULER, FROM HEAP TO DASHBOARD',
+    subtitle: 'DAG WORKFLOWS · DLQ · LIVE SSE DASHBOARD',
+    url: `${GH}/dilamme-job-scheduler`,
+    image: `${OG}/dilamme-job-scheduler`,
+  },
+  {
+    number: '02',
+    title: 'THE LOG FILE IS THE DATABASE',
+    subtitle: 'APPEND-ONLY EVENT STORE · CRASH RECOVERY',
+    url: `${GH}/append-only-event-store`,
+    image: `${OG}/append-only-event-store`,
+  },
+];
+
+export const OPEN_SOURCE: OpenSourceProject[] = [
+  {
+    name: 'FUZZRUN',
+    stars: 9,
+    tagline: 'Typos, fixed before you notice.',
+    description:
+      'A CLI that auto-corrects mistyped commands and re-runs them instantly — no prompt when the fix is high-confidence. Published on npm as fuzzrunx, with bash, zsh, and PowerShell hooks.',
+    tags: ['CLI', 'NPM', 'DX'],
+    url: `${GH}/FuzzRun`,
+    image: `${OG}/FuzzRun`,
+  },
+  {
+    name: 'CLUELESS',
+    stars: 8,
+    tagline: 'The AI overlay that costs $0, not $12.',
+    description:
+      'Always-on-top Electron overlay with screen-share protection and a built-in AI assistant panel. One OpenRouter key works with any model — GPT, Claude, Gemini, Llama.',
+    tags: ['ELECTRON', 'AI', 'DESKTOP'],
+    url: `${GH}/Clueless-`,
+    image: `${OG}/Clueless-`,
+  },
+  {
+    name: 'CODEROAST',
+    stars: 8,
+    tagline: 'Code reviews with receipts.',
+    description:
+      'Agent-based pipeline for evidence-bound code roasts: deterministic analysis first, tightly constrained narration second. No hallucinated feedback — every roast has proof.',
+    tags: ['AGENTS', 'AI', 'CODE REVIEW'],
+    url: `${GH}/CodeRoast`,
+    image: `${OG}/CodeRoast`,
+  },
+];
+
+export const CLIENT_WORK: ClientWork[] = [
+  {
+    name: 'DEEN AI',
+    role: 'On-Call Backend Engineer',
+    roleType: 'BE',
+    description:
+      'Architected microservices infrastructure handling 10K+ concurrent users. Built the Redis caching layer and real-time WebSocket streaming. Deployed on Kubernetes with auto-scaling.',
+    results: '10K+ concurrent users · −78% response times · 99.95% uptime',
+    tags: ['Microservices', 'Redis', 'WebSockets', 'K8s'],
+    duration: '2+ years',
+    url: 'https://deenai.app/',
+  },
+  {
+    name: 'US EXPRESS DROP',
+    role: 'Backend Developer',
+    roleType: 'BE',
+    description:
+      'Built PCI DSS-compliant payment processing, a geolocation API, and a distributed job queue for a logistics platform with real-time package tracking.',
+    results: '50K+ daily shipments · <200ms tracking latency · −40% support tickets',
+    tags: ['Payments', 'Geolocation', 'Queues'],
+    duration: '1.5+ years',
+    url: 'https://www.usexpressdrop.com/',
+  },
+  {
+    name: 'MANIFESTI',
+    role: 'Backend Developer (Code Audits)',
+    roleType: 'BE',
+    description:
+      'Comprehensive code audits on an enterprise content platform: fixed N+1 query problems, refactored the authentication system, standardized error handling across 50+ endpoints.',
+    results: '−65% database load · security hardening · 50+ endpoints cleaned',
+    tags: ['Audits', 'Security', 'Performance'],
+    duration: '1+ year',
+    url: 'https://manifesti.app/',
+  },
+  {
+    name: 'LAWYERS FOR VISAS',
+    role: 'CTO',
+    roleType: 'CTO',
+    description:
+      'Leading the technical direction of a visa immigration consulting platform — architecture design, team leadership, and full-stack optimization.',
+    tags: ['Architecture', 'Leadership'],
+    duration: 'Current',
+    url: 'https://www.lawyersforvisas.com',
+  },
+  {
+    name: 'MOMENTO LIVING',
+    role: 'Head of Development (Age 19)',
+    roleType: 'FE',
+    description:
+      'Led the full development team of a premium property and lifestyle management platform. Built scalable infrastructure and managed 5+ developers.',
+    tags: ['Team Lead', 'Infrastructure'],
+    duration: '1.5+ years',
+    url: 'https://www.momentoliving.com/',
+  },
+  {
+    name: 'VERTA PROPERTY GROUP',
+    role: 'Full Stack Developer',
+    roleType: 'FE',
+    description:
+      'Real estate solutions with integrated property management systems — responsive design, performance optimization, UX enhancement.',
+    tags: ['Full Stack', 'Performance'],
+    duration: '1+ year',
+    url: 'https://vertapropertygroup.co.uk/',
   },
 ];
 
 export const EXPERIENCE: ExperienceItem[] = [
-  {
-    title: "Back End Developer",
-    company: "HNG Tech",
-    type: "Internship",
-    date: "Oct 2025 - Present · 3 mos",
-    logoColor: "bg-sky-500",
-    logoText: "HNG"
-  },
-  {
-    title: "Back End Developer",
-    company: "XPRESSCORE",
-    type: "Full-time",
-    date: "Oct 2025 - Present · 3 mos",
-    skills: ["Back-End Web Development", "Critical Thinking"],
-    logoColor: "bg-red-600",
-    logoText: "XC"
-  },
-  {
-    title: "Cybersecurity intern",
-    company: "CodeAlpha",
-    type: "Internship",
-    date: "Nov 2024 - Dec 2024 · 2 mos",
-    location: "India · Remote",
-    logoColor: "bg-blue-800",
-    logoText: "CA"
-  },
-  {
-    title: "Cybersecurity intern",
-    company: "KPMG Nigeria",
-    type: "Internship",
-    date: "Jul 2024 - Nov 2024 · 5 mos",
-    location: "Nigeria · Hybrid",
-    description: "At KPMG, I developed a robust understanding of business resilience, encompassing risk assessment and mitigation strategies.",
-    skills: ["Risk Assessment", "Risk Management"],
-    logoColor: "bg-blue-600",
-    logoText: "KPMG"
-  },
-  {
-    title: "Backend Software Engineer",
-    company: "HNG Tech",
-    type: "Contract",
-    date: "Aug 2023 - Nov 2023 · 4 mos",
-    location: "Nigeria",
-    description: "During my time in the HNGx internship cohort, I had the opportunity to work on a range of impactful projects that expanded my expertise.",
-    skills: ["JavaScript", "Node.js"],
-    logoColor: "bg-sky-500",
-    logoText: "HNG"
-  }
+  { title: 'On-Call Backend Engineer', company: 'Deen AI', type: 'WIF auth · microservices · uptime', date: '2025 — Present', location: 'Remote' },
+  { title: 'Backend Team Lead (Finalist)', company: 'HNG13', type: 'Led Deen AI microservices · wallet system · mentoring', date: '2025', location: 'Remote' },
+  { title: 'Back End Developer', company: 'XPRESSCORE', type: 'Full-time', date: 'Oct 2025 — Present' },
+  { title: 'Cyber Security Analyst', company: 'KPMG', type: '95% readiness · 20+ risks mitigated · ISO 22301 DR plan', date: 'Mar 2024 — Nov 2024', location: 'Lagos' },
+  { title: 'Software Developer', company: 'CodeAlpha', type: 'Network sniffer · log-analysis automation', date: 'Mar 2024 — May 2024', location: 'Remote' },
+  { title: 'Backend Web Developer (Client Project)', company: 'KPMG', type: '15+ KYC APIs · +30% processing speed · 1K+ weekly users', date: 'Mar 2023 — Nov 2023', location: 'Lagos' },
+  { title: 'Backend Developer', company: 'HNG Bootcamp', type: 'REST APIs · Node.js · MySQL', date: 'Aug 2023 — Nov 2023', location: 'Remote' },
 ];
 
-export const PROJECTS: Project[] = [
+export const EDUCATION = 'B.SC. COMPUTER SCIENCE — CRESCENT UNIVERSITY · SECOND CLASS UPPER';
+
+export const CERTIFICATIONS = [
+  'ISO 27001 Lead Implementer — Mastermind Assurance (2025)',
+  'AWS Cloud Practitioner — AWS (2024)',
+  'Fundamentals of Cybersecurity — ISC2 (2024)',
+  'Python for Data Science — Coursera (2023)',
+  'HNG Backend Developer (2023 & 2025)',
+];
+
+export const PRINCIPLES: Principle[] = [
   {
-    name: "E-Commerce Microservices Platform",
-    description: "Built a scalable microservices architecture handling 1M+ daily transactions. Implemented event-driven communication using RabbitMQ and Redis for caching. Services deployed on Kubernetes with auto-scaling capabilities.",
-    stack: ["Node.js", "PostgreSQL", "Redis", "Kubernetes", "RabbitMQ"],
+    number: '01',
+    title: 'I OWN THE OUTCOME',
+    text: "Give me the problem, not a ticket. I map the path, flag risks early, and ship — you don't chase me for updates.",
   },
   {
-    name: "Real-Time Analytics Engine",
-    description: "Developed a high-performance analytics pipeline processing 50GB+ of data daily. Implemented stream processing with Apache Kafka and designed efficient data models for time-series analysis. Reduced query times by 85% through optimized indexing.",
-    stack: ["Python", "Apache Kafka", "MongoDB", "Docker", "Grafana"],
+    number: '02',
+    title: 'REMOTE, ASYNC, RELIABLE',
+    text: 'Remote-first, async-first, with overlap for the calls that matter. Decisions in writing, so nobody waits on me to move.',
   },
   {
-    name: "RESTful API Gateway",
-    description: "Architected a robust API gateway serving 200+ endpoints with rate limiting, authentication, and comprehensive logging. Implemented OAuth 2.0 and JWT for security. Achieved 99.9% uptime with load balancing and health checks.",
-    stack: ["Go", "MySQL", "Nginx", "AWS", "Terraform"],
+    number: '03',
+    title: 'PROOF OVER PROMISES',
+    text: "Every claim on this page has a number behind it. That's also how I report progress — metrics, not vibes.",
+  },
+  {
+    number: '04',
+    title: 'BUILT TO NOT WAKE YOU UP',
+    text: 'Idempotent jobs, retries, dead-letter queues, audit trails. Systems that fail loudly in dev and recover quietly in prod.',
   },
 ];
 
-export const EXPERTISE = {
-  "Languages": {
-    skills: ["Node.js", "Python", "Go", "Java", "TypeScript"],
-    color: "bg-red-500"
-  },
-  "Databases": {
-    skills: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Elasticsearch"],
-    color: "bg-blue-600"
-  },
-  "Infrastructure": {
-    skills: ["Docker", "Kubernetes", "AWS", "Terraform", "Nginx"],
-    color: "bg-green-600"
-  },
-  "Tools & Frameworks": {
-    skills: ["Express.js", "FastAPI", "RabbitMQ", "Kafka", "GraphQL"],
-    color: "bg-indigo-700"
-  }
+export const SKILLS: Record<string, string[]> = {
+  Languages: ['TypeScript', 'JavaScript', 'Node.js', 'Python'],
+  Frameworks: ['Express.js', 'NestJS', 'FastAPI', 'Flask', 'Next.js'],
+  'Databases & BaaS': ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'Firebase', 'Supabase'],
+  Infrastructure: ['Docker', 'Kubernetes', 'AWS', 'Nginx', 'RabbitMQ', 'Kafka'],
 };
-
-export const CONTACT_LINKS = [
-    {
-        name: 'GitHub',
-        url: 'https://github.com/oduwoleeyinojuoluwa44?tab=repositories',
-        icon: 'github',
-        color: 'bg-purple-600'
-    },
-    {
-        name: 'LinkedIn',
-        url: 'https://www.linkedin.com/in/oduwole-eyinojuoluwa-taofeek-teo-54544b290/',
-        icon: 'linkedin',
-        color: 'bg-blue-500'
-    },
-    {
-        name: 'Email',
-        url: 'mailto:oduwoleeyinojoluwa44@gmail.com',
-        text: 'oduwoleeyinojoluwa44@gmail.com',
-        icon: 'email',
-        color: 'bg-red-500'
-    }
-];
-
-export interface Work {
-  name: string;
-  url: string;
-  role: string;
-  roleType: 'frontend' | 'backend';
-  color: string;
-  description: string;
-  achievements?: string[];
-  keyContribution?: string;
-  yearsOfExp?: string;
-}
-
-export const WORKS: Work[] = [
-  {
-    name: 'Lawyers for Visas',
-    url: 'https://www.lawyersforvisas.com',
-    role: 'Current CTO',
-    roleType: 'frontend',
-    color: 'bg-blue-600',
-    description: 'Leading visa immigration consulting platform with modern web infrastructure',
-    achievements: ['Architecture design', 'Team leadership', 'Full-stack optimization'],
-    yearsOfExp: 'Current'
-  },
-  {
-    name: 'Momento Living',
-    url: 'https://www.momentoliving.com/',
-    role: 'Head of Development (Age 19)',
-    roleType: 'frontend',
-    color: 'bg-purple-600',
-    description: 'Premium property and lifestyle management platform',
-    achievements: ['Led full development team', 'Built scalable infrastructure', 'Managed 5+ developers'],
-    yearsOfExp: '1.5+ years'
-  },
-  {
-    name: 'Verta Property Group',
-    url: 'https://vertapropertygroup.co.uk/',
-    role: 'Full Stack Developer',
-    roleType: 'frontend',
-    color: 'bg-green-600',
-    description: 'Real estate solutions with integrated property management systems',
-    achievements: ['Responsive design', 'Performance optimization', 'User experience enhancement'],
-    yearsOfExp: '1+ year'
-  },
-  {
-    name: 'Deen AI',
-    url: 'https://deenai.app/',
-    role: 'Lead Backend Developer',
-    roleType: 'backend',
-    color: 'bg-indigo-600',
-    description: 'AI-powered platform with complex data processing pipelines',
-    keyContribution: 'Architected microservices infrastructure handling 10K+ concurrent users. Implemented Redis caching layer reducing API response times by 78%. Built real-time WebSocket infrastructure for live data streaming. Deployed on Kubernetes with auto-scaling, achieving 99.95% uptime.',
-    achievements: ['Microservices architecture', 'Real-time data processing', 'Cloud infrastructure (K8s)'],
-    yearsOfExp: '2+ years'
-  },
-  {
-    name: 'Manifesti',
-    url: 'https://manifesti.app/',
-    role: 'Support Backend Developer (Code Audits)',
-    roleType: 'backend',
-    color: 'bg-pink-600',
-    description: 'Content creation and distribution platform with enterprise-grade backend',
-    keyContribution: 'Conducted comprehensive code audits and resolved critical architectural issues. Fixed N+1 query problems reducing database load by 65%. Refactored authentication system improving security posture. Implemented proper error handling and logging across 50+ endpoints.',
-    achievements: ['Code quality improvements', 'Security hardening', 'Performance optimization'],
-    yearsOfExp: '1+ year'
-  },
-  {
-    name: 'US Express Drop',
-    url: 'https://www.usexpressdrop.com/',
-    role: 'Backend Developer',
-    roleType: 'backend',
-    color: 'bg-red-600',
-    description: 'Logistics and package delivery platform with real-time tracking',
-    keyContribution: 'Built payment processing integration with PCI DSS compliance. Developed geolocation API reducing tracking latency to <200ms. Implemented distributed job queue handling 50K+ daily shipments. Created audit trails for regulatory compliance reducing support tickets by 40%.',
-    achievements: ['Payment systems', 'Real-time tracking', 'Job queue optimization'],
-    yearsOfExp: '1.5+ years'
-  }
-];
