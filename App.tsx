@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   LINKS, SPEC, MARQUEE_TECH, PROOF_STATS, CREDENTIALS,
   ENGAGEMENTS, CASE_STUDIES, OPEN_SOURCE, CLIENT_WORK, EXPERIENCE, PRINCIPLES, SKILLS,
-  EDUCATION, CERTIFICATIONS,
+  EDUCATION, CERTIFICATIONS, TECH_ICONS,
 } from './constants';
 import { ProofStat } from './types';
 
@@ -102,6 +102,17 @@ const CountUp = ({ stat }: { stat: ProofStat }) => {
   return (
     <span ref={ref} className="font-display text-4xl lg:text-5xl border-b-4 border-brand-yellow pb-1 inline-block">
       {stat.prefix ?? ''}{display}{stat.suffix ?? ''}
+    </span>
+  );
+};
+
+// Tech logo in a small white chip so dark logos stay visible on any background
+const TechIcon = ({ name, size = 'w-5 h-5' }: { name: string; size?: string }) => {
+  const src = TECH_ICONS[name];
+  if (!src) return null;
+  return (
+    <span className="inline-flex items-center justify-center bg-white border-2 border-black p-0.5 shrink-0">
+      <img src={src} alt="" loading="lazy" className={`${size} object-contain`} />
     </span>
   );
 };
@@ -321,9 +332,10 @@ const Marquee = () => (
   <div className="bg-black border-y-4 border-black overflow-hidden py-4 relative">
     <div className="animate-marquee flex whitespace-nowrap w-max">
       {[...MARQUEE_TECH, ...MARQUEE_TECH].map((tech, i) => (
-        <span key={i} className="font-mono font-bold text-white text-sm md:text-base mx-6 flex items-center gap-12">
+        <span key={i} className="font-mono font-bold text-white text-sm md:text-base mx-6 flex items-center gap-3">
+          <TechIcon name={tech} />
           {tech}
-          <span className="text-brand-yellow text-xs">◆</span>
+          <span className="text-brand-yellow text-xs ml-9">◆</span>
         </span>
       ))}
     </div>
@@ -362,7 +374,7 @@ const HireMe = () => (
     <div className="max-w-7xl mx-auto">
       <Reveal>
         <Kicker>TYPICAL ENGAGEMENTS</Kicker>
-        <h2 className="font-display text-3xl md:text-5xl text-black mt-4">HOW YOU CAN HIRE ME.</h2>
+        <h2 className="font-display text-3xl md:text-5xl text-black mt-4">WHY YOU SHOULD HIRE ME.</h2>
       </Reveal>
       <div className="grid md:grid-cols-3 gap-8 mt-10">
         {ENGAGEMENTS.map((eng, i) => (
@@ -557,10 +569,10 @@ const Experience = () => (
           {Object.entries(SKILLS).map(([category, skills]) => (
             <Box key={category} className="bg-white p-5" shadow={6}>
               <h3 className="font-mono font-bold text-xs tracking-widest text-black border-b-2 border-black pb-2">{category.toUpperCase()}</h3>
-              <ul className="mt-3 space-y-1.5">
+              <ul className="mt-3 space-y-2">
                 {skills.map((skill) => (
                   <li key={skill} className="font-body text-sm text-gray-800 flex items-center gap-2">
-                    <span className="text-brand-yellow text-xs">◆</span>{skill}
+                    <TechIcon name={skill} size="w-4 h-4" />{skill}
                   </li>
                 ))}
               </ul>

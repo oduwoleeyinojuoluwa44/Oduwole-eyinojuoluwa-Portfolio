@@ -32,6 +32,46 @@ export const MARQUEE_TECH = [
   'DOCKER', 'KUBERNETES', 'AWS', 'TERRAFORM',
 ];
 
+// devicon CDN filenames, keyed by the display names used across the site
+const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
+export const TECH_ICONS: Record<string, string> = {
+  'NODE.JS': `${DEVICON}/nodejs/nodejs-original.svg`,
+  'Node.js': `${DEVICON}/nodejs/nodejs-original.svg`,
+  TYPESCRIPT: `${DEVICON}/typescript/typescript-original.svg`,
+  TypeScript: `${DEVICON}/typescript/typescript-original.svg`,
+  JavaScript: `${DEVICON}/javascript/javascript-original.svg`,
+  NESTJS: `${DEVICON}/nestjs/nestjs-original.svg`,
+  NestJS: `${DEVICON}/nestjs/nestjs-original.svg`,
+  EXPRESS: `${DEVICON}/express/express-original.svg`,
+  'Express.js': `${DEVICON}/express/express-original.svg`,
+  PYTHON: `${DEVICON}/python/python-original.svg`,
+  Python: `${DEVICON}/python/python-original.svg`,
+  GO: `${DEVICON}/go/go-original.svg`,
+  POSTGRESQL: `${DEVICON}/postgresql/postgresql-original.svg`,
+  PostgreSQL: `${DEVICON}/postgresql/postgresql-original.svg`,
+  MONGODB: `${DEVICON}/mongodb/mongodb-original.svg`,
+  MongoDB: `${DEVICON}/mongodb/mongodb-original.svg`,
+  REDIS: `${DEVICON}/redis/redis-original.svg`,
+  Redis: `${DEVICON}/redis/redis-original.svg`,
+  KAFKA: `${DEVICON}/apachekafka/apachekafka-original.svg`,
+  Kafka: `${DEVICON}/apachekafka/apachekafka-original.svg`,
+  RABBITMQ: `${DEVICON}/rabbitmq/rabbitmq-original.svg`,
+  RabbitMQ: `${DEVICON}/rabbitmq/rabbitmq-original.svg`,
+  DOCKER: `${DEVICON}/docker/docker-original.svg`,
+  Docker: `${DEVICON}/docker/docker-original.svg`,
+  KUBERNETES: `${DEVICON}/kubernetes/kubernetes-original.svg`,
+  Kubernetes: `${DEVICON}/kubernetes/kubernetes-original.svg`,
+  AWS: `${DEVICON}/amazonwebservices/amazonwebservices-plain-wordmark.svg`,
+  TERRAFORM: `${DEVICON}/terraform/terraform-original.svg`,
+  FastAPI: `${DEVICON}/fastapi/fastapi-original.svg`,
+  Flask: `${DEVICON}/flask/flask-original.svg`,
+  'Next.js': `${DEVICON}/nextjs/nextjs-original.svg`,
+  MySQL: `${DEVICON}/mysql/mysql-original.svg`,
+  Firebase: `${DEVICON}/firebase/firebase-original.svg`,
+  Supabase: `${DEVICON}/supabase/supabase-original.svg`,
+  Nginx: `${DEVICON}/nginx/nginx-original.svg`,
+};
+
 export const PROOF_STATS: ProofStat[] = [
   {
     target: 10, suffix: 'K+',
