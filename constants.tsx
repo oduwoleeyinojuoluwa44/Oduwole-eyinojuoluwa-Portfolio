@@ -22,12 +22,12 @@ export const SPEC: SpecRow[] = [
   { label: 'BASED', value: 'Lagos, NG' },
   { label: 'MODE', value: 'Remote · Intl' },
   { label: 'ENGAGE', value: 'Full-time / Contract' },
-  { label: 'STACK', value: 'Node · Nest · Python' },
+  { label: 'STACK', value: 'React · Node · Python' },
   { label: 'STATUS', value: 'Available', isStatus: true },
 ];
 
 export const MARQUEE_TECH = [
-  'NODE.JS', 'TYPESCRIPT', 'NESTJS', 'EXPRESS', 'PYTHON', 'GO',
+  'REACT', 'NEXT.JS', 'NODE.JS', 'TYPESCRIPT', 'NESTJS', 'EXPRESS', 'PYTHON', 'GO',
   'POSTGRESQL', 'MONGODB', 'REDIS', 'KAFKA', 'RABBITMQ',
   'DOCKER', 'KUBERNETES', 'AWS', 'TERRAFORM',
 ];
@@ -35,6 +35,9 @@ export const MARQUEE_TECH = [
 // devicon CDN filenames, keyed by the display names used across the site
 const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
 export const TECH_ICONS: Record<string, string> = {
+  REACT: `${DEVICON}/react/react-original.svg`,
+  React: `${DEVICON}/react/react-original.svg`,
+  'NEXT.JS': `${DEVICON}/nextjs/nextjs-original.svg`,
   'NODE.JS': `${DEVICON}/nodejs/nodejs-original.svg`,
   'Node.js': `${DEVICON}/nodejs/nodejs-original.svg`,
   TYPESCRIPT: `${DEVICON}/typescript/typescript-original.svg`,
@@ -104,18 +107,18 @@ export const CREDENTIALS = 'AWS CERTIFIED · ISO 27001 LI · HNG13 FINALIST · T
 
 export const ENGAGEMENTS = [
   {
-    title: 'BACKEND RESCUE',
+    title: 'RESCUE & RESCALE',
     problem: 'Your API is slow, or your system keeps falling over.',
     bullets: ['Architecture & query audit', 'Bottleneck identification', 'Fixes shipped to production'],
   },
   {
-    title: 'MVP BACKEND, END-TO-END',
-    problem: 'You have a product idea and need the backend built right the first time.',
-    bullets: ['Auth, payments, queues', 'Zero to production', 'Documented & handed over'],
+    title: 'MVP, END-TO-END',
+    problem: 'You have a product idea and need it built right the first time — UI to database.',
+    bullets: ['Frontend, auth, payments, queues', 'Zero to production', 'Documented & handed over'],
   },
   {
     title: 'EMBEDDED ENGINEER',
-    problem: 'You need a backend engineer who owns outcomes, not tickets.',
+    problem: 'You need a full stack engineer who owns outcomes, not tickets.',
     bullets: ['Full-time or contract', 'Remote, async-first', 'Team-lead experience'],
   },
 ];
@@ -281,7 +284,7 @@ export const PRINCIPLES: Principle[] = [
 
 export const SKILLS: Record<string, string[]> = {
   Languages: ['TypeScript', 'JavaScript', 'Node.js', 'Python'],
-  Frameworks: ['Express.js', 'NestJS', 'FastAPI', 'Flask', 'Next.js'],
+  Frameworks: ['React', 'Next.js', 'Express.js', 'NestJS', 'FastAPI', 'Flask'],
   'Databases & BaaS': ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'Firebase', 'Supabase'],
   Infrastructure: ['Docker', 'Kubernetes', 'AWS', 'Nginx', 'RabbitMQ', 'Kafka'],
 };

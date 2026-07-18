@@ -272,7 +272,7 @@ const Hero = () => (
     <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_420px] gap-12 items-center relative z-10">
       <div>
         <Reveal>
-          <Kicker>BACKEND ENGINEER · BUILDER</Kicker>
+          <Kicker>FULL STACK ENGINEER · BUILDER</Kicker>
         </Reveal>
         <Reveal delay={100}>
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95] mt-6 text-black">
@@ -288,8 +288,8 @@ const Hero = () => (
         <Reveal delay={200}>
           <p className="font-body text-lg md:text-xl text-black max-w-xl mt-8 leading-relaxed">
             For founders and teams whose API is slow, whose system won't scale,
-            or whose product still needs its backend built: I find what's
-            blocking it and ship the fix — with a number to prove it worked.
+            or whose product still needs to be built: I take it from frontend to
+            backend and ship the fix — with a number to prove it worked.
           </p>
         </Reveal>
         <Reveal delay={300}>
