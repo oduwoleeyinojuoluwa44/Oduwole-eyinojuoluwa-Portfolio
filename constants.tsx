@@ -14,8 +14,8 @@ const OG = 'https://opengraph.githubassets.com/1/oduwoleeyinojuoluwa44';
 export const LINKS = {
   github: `${GH}?tab=repositories`,
   linkedin: 'https://www.linkedin.com/in/oduwole-eyinojuoluwa-taofeek-teo-54544b290/',
-  email: 'mailto:oduwoleeyinojoluwa44@gmail.com',
-  emailText: 'oduwoleeyinojoluwa44@gmail.com',
+  email: 'mailto:oduwoleeyinojuoluwa44@gmail.com',
+  emailText: 'oduwoleeyinojuoluwa44@gmail.com',
 };
 
 export const SPEC: SpecRow[] = [

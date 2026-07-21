@@ -26,7 +26,7 @@ This portfolio highlights my experience in:
 
 - **GitHub**: [oduwoleeyinojuoluwa44](https://github.com/oduwoleeyinojuoluwa44?tab=repositories)
 - **LinkedIn**: [Oduwole Eyinojuoluwa](https://www.linkedin.com/in/oduwole-eyinojuoluwa-taofeek-teo-54544b290/)
-- **Email**: oduwoleeyinojoluwa44@gmail.com
+- **Email**: oduwoleeyinojuoluwa44@gmail.com
 
 ---
 © 2025 Oduwole Eyinojuoluwa. All rights reserved.
